@@ -42,7 +42,8 @@ helm uninstall -n apollo apollo-service-dev
 ### Install Apollo Portal
 
 ```bash
-helm install apollo-portal \
+helm upgrade -i apollo-portal \
+    -f ./portal-values.yaml \
     --set portaldb.host=apollo-mysql.apollo \
     --set configdb.dbName=ApolloPortalDB \
     --set portaldb.userName=root \
@@ -51,8 +52,6 @@ helm install apollo-portal \
     --set config.metaServers.dev=http://apollo-service-dev-apollo-configservice:8080 \
     --set replicaCount=1 \
     --set ingress.enabled=true \
-    --set ingress.hosts.host=apollo.devops.com
-    --set ingress.hosts.paths=/ \
     -n apollo \
     apollo/apollo-portal
 ```
@@ -61,4 +60,12 @@ Uninstall if needs
 
 ```bash
 helm uninstall -n apollo apollo-portal
+```
+
+### Access Ingress
+
+Edit /etc/hosts add follow lies:
+
+```text
+sudo echo "$(minikube ip) apollo.devops.com" | sudo tee -a /etc/hosts
 ```
