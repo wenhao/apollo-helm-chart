@@ -58,7 +58,7 @@ helm upgrade -i apollo-portal \
 
 Deploy with multiple metaServers
 
-**配置项统一存储在ApolloPortalDB.ServerConfig表中，也可以通过管理员工具 - 系统参数页面进行配置，无特殊说明则修改完一分钟实时生效。**
+**配置项统一存储在ApolloPortalDB.ServerConfig表中，也可以通过管理员工具 - 系统参数页面进行配置（apollo.portal.envs），无特殊说明则修改完一分钟实时生效。**
 
 ```bash
 helm upgrade -i apollo-portal \
